@@ -1,0 +1,5 @@
+{
+  "name": "Campaign Manager",
+  "description": "A React application to manage and list marketing campaigns. Users can view existing campaigns and add new ones using a clean, modern interface.",
+  "requestFramePermissions": []
+}
