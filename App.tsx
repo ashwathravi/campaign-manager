@@ -60,48 +60,47 @@ const App = (): React.ReactNode => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-slate-100 p-4 sm:p-8 font-sans">
-      <header className="mb-10 text-center">
-        <div className="inline-flex items-center justify-center">
-          <MegaphoneIcon className="h-12 w-12 text-sky-400 mr-3" />
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-cyan-300">
+    <div className="app-container">
+      <header className="app-header">
+        <div className="app-header-title-container">
+          <MegaphoneIcon className="app-megaphone-icon" />
+          <h1 className="app-title">
             Campaign Manager
           </h1>
         </div>
-        <p className="mt-3 text-lg text-slate-400 max-w-xl mx-auto">
+        <p className="app-header-subtitle">
           Organize, track, and manage your marketing campaigns with ease.
         </p>
       </header>
 
-      <main className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <section className="md:col-span-1">
+      <main className="app-main-content">
+        <section className="app-main-form-section">
           <CampaignForm onAddCampaign={addCampaignHandler} />
         </section>
 
-        <section className="md:col-span-2">
+        <section className="app-main-list-section">
           {isLoading && (
-            <Card className="p-6 bg-slate-800 shadow-xl text-center">
-              <h2 className="text-2xl font-semibold text-sky-400 mb-4">Loading Campaigns...</h2>
-              <p className="text-slate-400">Please wait while we fetch the campaign data.</p>
-              {/* Basic spinner */}
-              <div className="mt-4 flex justify-center items-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sky-400"></div>
+            <Card className="app-loading-card">
+              <h2 className="app-card-title-loading">Loading Campaigns...</h2>
+              <p className="app-card-text-loading">Please wait while we fetch the campaign data.</p>
+              <div className="app-spinner-container">
+                <div className="app-spinner"></div>
               </div>
             </Card>
           )}
           {fetchError && (
-             <Card className="p-6 bg-red-900/50 border border-red-700 shadow-xl text-center">
-              <h2 className="text-2xl font-semibold text-red-300 mb-4">Error Fetching Campaigns</h2>
-              <p className="text-red-200">{fetchError}</p>
-              <Button onClick={fetchCampaigns} className="mt-4">Try Again</Button>
+             <Card className="app-error-card">
+              <h2 className="app-card-title-error">Error Fetching Campaigns</h2>
+              <p className="app-card-text-error">{fetchError}</p>
+              <Button onClick={fetchCampaigns} className="app-try-again-button">Try Again</Button>
             </Card>
           )}
           {!isLoading && !fetchError && <CampaignList campaigns={campaigns} />}
         </section>
       </main>
 
-      <footer className="text-center mt-12 py-6 border-t border-slate-700">
-        <p className="text-sm text-slate-500">
+      <footer className="app-footer">
+        <p className="app-footer-text">
           &copy; {new Date().getFullYear()} Campaign Manager App. Built with React & Tailwind CSS.
         </p>
       </footer>

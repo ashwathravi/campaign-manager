@@ -13,21 +13,21 @@ interface CampaignListItemProps {
 
 const CampaignListItem = ({ campaign }: CampaignListItemProps): React.ReactNode => {
   return (
-    <Card className="p-4 bg-slate-700 hover:bg-slate-600 transition-colors duration-150 ease-in-out shadow-lg rounded-lg">
-      <div className="flex flex-col sm:flex-row justify-between sm:items-center">
-        <div className="mb-2 sm:mb-0">
-          <h3 className="text-lg font-semibold text-sky-300 flex items-center">
-            <MegaphoneIcon className="h-5 w-5 mr-2 text-sky-400 flex-shrink-0" />
+    <Card className="campaign-list-item-card">
+      <div className="campaign-list-item-header">
+        <div className="campaign-list-item-name-container">
+          <h3 className="campaign-list-item-name">
+            <MegaphoneIcon className="campaign-list-item-name-icon" />
             {campaign.name}
           </h3>
         </div>
-        <div className="text-sm text-slate-400 bg-slate-800 px-2 py-1 rounded-full self-start sm:self-center">
+        <div className="campaign-list-item-id-badge">
           ID: {campaign.id}
         </div>
       </div>
-      <div className="mt-2 pt-2 border-t border-slate-600">
-        <p className="text-sm text-slate-300 flex items-center">
-          <MapPinIcon className="h-4 w-4 mr-2 text-teal-400 flex-shrink-0" />
+      <div className="campaign-list-item-details">
+        <p className="campaign-list-item-location">
+          <MapPinIcon className="campaign-list-item-location-icon" />
           Location: {campaign.location}
         </p>
       </div>

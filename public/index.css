@@ -1,0 +1,486 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0f172a; /* Original Tailwind: bg-slate-900 */
+  /* Ensure text color is suitable for the dark background, e.g., light gray or white */
+  color: #f1f5f9; /* Example: slate-100, adjust as needed */
+}
+
+/* Custom scrollbar for elements with .custom-scrollbar class */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1e293b; /* Original Tailwind: slate-800 */
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #38bdf8; /* Original Tailwind: sky-400 */
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0ea5e9; /* Original Tailwind: sky-500 */
+}
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #38bdf8 #1e293b; /* thumb and track color */
+}
+
+/* Import Google Fonts 'Inter' - this should be in index.html or here if not loaded by other means */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* App.tsx Specific Styles */
+
+/* Main container for App */
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #0f172a, #1e293b); /* from-slate-900 to-slate-800 */
+  color: #f1f5f9; /* text-slate-100 (already on body, but good for specificity) */
+  padding: 1rem; /* p-4 */
+  font-family: 'Inter', sans-serif; /* font-sans (already on body) */
+}
+@media (min-width: 640px) { /* sm: */
+  .app-container {
+    padding: 2rem; /* sm:p-8 */
+  }
+}
+
+/* Header */
+.app-header {
+  margin-bottom: 2.5rem; /* mb-10 */
+  text-align: center; /* text-center */
+}
+
+.app-header-title-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-title {
+  font-size: 2.25rem; /* text-4xl */
+  line-height: 2.5rem;
+  font-weight: 700; /* font-bold */
+  letter-spacing: -0.025em; /* tracking-tight */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #38bdf8, #67e8f9); /* from-sky-400 to-cyan-300 */
+}
+@media (min-width: 640px) { /* sm: */
+  .app-title {
+    font-size: 3rem; /* sm:text-5xl */
+    line-height: 1;
+  }
+}
+
+.app-header-subtitle {
+  margin-top: 0.75rem; /* mt-3 */
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  color: #94a3b8; /* text-slate-400 */
+  max-width: 36rem; /* max-w-xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Main content area */
+.app-main-content {
+  max-width: 56rem; /* max-w-4xl */
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
+  gap: 2rem; /* gap-8 */
+}
+@media (min-width: 768px) { /* md: */
+  .app-main-content {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* md:grid-cols-3 */
+  }
+}
+
+.app-main-form-section {
+  /* no specific styles from App.tsx, relies on grid layout */
+}
+@media (min-width: 768px) { /* md: */
+  .app-main-form-section {
+    grid-column: span 1 / span 1; /* md:col-span-1 */
+  }
+}
+
+.app-main-list-section {
+  /* no specific styles from App.tsx, relies on grid layout */
+}
+@media (min-width: 768px) { /* md: */
+  .app-main-list-section {
+    grid-column: span 2 / span 2; /* md:col-span-2 */
+  }
+}
+
+/* Loading/Error Card Specific Styles (applied via Card's className prop) */
+/* We will create classes that App.tsx passes to Card. Card itself will be handled later. */
+.app-loading-card {
+  padding: 1.5rem; /* p-6 */
+  /* background-color: #1e293b; bg-slate-800 - Card default is bg-slate-800/70 */
+  /* Card component has its own bg, so we might not need to override bg here unless specifically different */
+  /* box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); shadow-xl - Card default */
+  text-align: center; /* text-center */
+}
+
+.app-error-card {
+  padding: 1.5rem; /* p-6 */
+  background-color: rgba(127, 29, 29, 0.5); /* bg-red-900/50 */
+  border: 1px solid #b91c1c; /* border border-red-700 */
+  /* box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); shadow-xl - Card default */
+  text-align: center; /* text-center */
+}
+
+
+/* Text styles within cards */
+.app-card-title-loading { /* h2 for loading */
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem;
+  font-weight: 600; /* font-semibold */
+  color: #38bdf8; /* text-sky-400 */
+  margin-bottom: 1rem; /* mb-4 */
+}
+.app-card-text-loading { /* p for loading */
+  color: #94a3b8; /* text-slate-400 */
+}
+
+.app-card-title-error { /* h2 for error */
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem;
+  font-weight: 600; /* font-semibold */
+  color: #fca5a5; /* text-red-300 */
+  margin-bottom: 1rem; /* mb-4 */
+}
+.app-card-text-error { /* p for error */
+  color: #fecaca; /* text-red-200 */
+}
+
+/* Spinner */
+.app-spinner-container {
+  margin-top: 1rem; /* mt-4 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.app-spinner {
+  animation: spin 1s linear infinite;
+  border-radius: 9999px; /* rounded-full */
+  height: 3rem; /* h-12 */
+  width: 3rem; /* w-12 */
+  border-top-width: 2px; /* border-t-2 */
+  border-bottom-width: 2px; /* border-b-2 */
+  border-left-width: 2px; /* Adding for consistency if only t/b were colored */
+  border-right-width: 2px; /* Adding for consistency if only t/b were colored */
+  border-style: solid; /* Make sure border-style is solid */
+  border-color: transparent; /* Default border color */
+  border-top-color: #38bdf8; /* border-sky-400 for top */
+  border-bottom-color: #38bdf8; /* border-sky-400 for bottom */
+}
+
+
+/* Footer */
+.app-footer {
+  text-align: center; /* text-center */
+  margin-top: 3rem; /* mt-12 */
+  padding-top: 1.5rem; /* py-6 */
+  padding-bottom: 1.5rem; /* py-6 */
+  border-top-width: 1px; /* border-t */
+  border-top-style: solid; /* Ensure border style is set */
+  border-top-color: #334155; /* border-slate-700 */
+}
+
+.app-footer-text {
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.25rem;
+  color: #64748b; /* text-slate-500 */
+}
+
+/* Utility classes for MegaphoneIcon specific styling in App.tsx */
+.app-megaphone-icon {
+  height: 3rem; /* h-12 */
+  width: 3rem; /* w-12 */
+  color: #38bdf8; /* text-sky-400 */
+  margin-right: 0.75rem; /* mr-3 */
+}
+
+/* Utility class for the Try Again button margin */
+.app-try-again-button {
+  margin-top: 1rem; /* mt-4 */
+}
+
+/* Button Component Styles */
+.button {
+  font-weight: 600; /* font-semibold */
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-md */
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-duration: 150ms; /* duration-150 */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+  border: 2px solid transparent;
+  outline: none; /* Replaces focus:outline-none */
+}
+
+.button:focus {
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06), 0 0 0 2px var(--button-focus-ring-color, rgba(59, 130, 246, 0.75));
+}
+
+.button-primary {
+  background-color: #0ea5e9; /* bg-sky-500 */
+  color: #ffffff; /* text-white */
+  --button-focus-ring-color: rgba(56, 189, 248, 0.75); /* focus:ring-sky-400 with opacity 0.75 */
+}
+.button-primary:hover {
+  background-color: #0284c7; /* hover:bg-sky-600 */
+}
+
+.button-secondary {
+  background-color: #475569; /* bg-slate-600 */
+  color: #f1f5f9; /* text-slate-100 */
+  --button-focus-ring-color: rgba(100, 116, 139, 0.75); /* focus:ring-slate-500 with opacity 0.75 */
+}
+.button-secondary:hover {
+  background-color: #334155; /* hover:bg-slate-700 */
+}
+
+.button-danger {
+  background-color: #ef4444; /* bg-red-500 */
+  color: #ffffff; /* text-white */
+  --button-focus-ring-color: rgba(248, 113, 113, 0.75); /* focus:ring-red-400 with opacity 0.75 */
+}
+.button-danger:hover {
+  background-color: #dc2626; /* hover:bg-red-600 */
+}
+
+/* Card Component Styles */
+.custom-card {
+  background-color: rgba(30, 41, 59, 0.7); /* bg-slate-800/70 */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* backdrop-blur-md */
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-lg */
+}
+
+/* CampaignForm.tsx Specific Styles */
+.campaign-form-card {
+  padding: 1.5rem; /* p-6 */
+  background-color: #1e293b; /* bg-slate-800 */
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); /* shadow-xl */
+}
+
+.campaign-form-title {
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem;
+  font-weight: 600; /* font-semibold */
+  color: #38bdf8; /* text-sky-400 */
+  margin-bottom: 1.5rem; /* mb-6 */
+  display: flex;
+  align-items: center;
+}
+
+.campaign-form-title-icon {
+  height: 1.5rem; /* h-6 */
+  width: 1.5rem; /* w-6 */
+  margin-right: 0.5rem; /* mr-2 */
+}
+
+.campaign-form > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1.5rem; /* space-y-6 */
+}
+
+.campaign-form-input-icon {
+  height: 1.25rem; /* h-5 */
+  width: 1.25rem; /* w-5 */
+  color: #94a3b8; /* text-slate-400 */
+}
+
+.campaign-form-error-message {
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.25rem;
+  color: #f87171; /* text-red-400 */
+}
+
+.campaign-form-submit-button {
+  width: 100%; /* w-full */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.campaign-form-spinner-icon {
+  margin-left: -0.25rem; /* -ml-1 */
+  margin-right: 0.75rem; /* mr-3 */
+  height: 1.25rem; /* h-5 */
+  width: 1.25rem; /* w-5 */
+  color: #ffffff; /* text-white */
+}
+.campaign-form-spinner-icon.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.campaign-form-spinner-icon .spinner-circle {
+  opacity: 0.25; /* opacity-25 */
+}
+.campaign-form-spinner-icon .spinner-path {
+  opacity: 0.75; /* opacity-75 */
+}
+
+.campaign-form-button-icon {
+  height: 1.25rem; /* h-5 */
+  width: 1.25rem; /* w-5 */
+  margin-right: 0.5rem; /* mr-2 */
+}
+
+/* CampaignList.tsx Styles */
+
+/* For the card shown when the campaign list is empty */
+.campaign-list-empty-card {
+  padding: 1.5rem; /* p-6 */
+  text-align: center; /* text-center */
+}
+
+.campaign-list-empty-title {
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem;
+  font-weight: 600; /* font-semibold */
+  color: #38bdf8; /* text-sky-400 */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+.campaign-list-empty-text {
+  color: #94a3b8; /* text-slate-400 */
+}
+
+.campaign-list-empty-svg-container {
+  margin-top: 1.5rem; /* mt-6 */
+  opacity: 0.5; /* opacity-50 */
+  display: flex;
+  justify-content: center;
+}
+
+.campaign-list-empty-svg {
+  width: 6rem; /* w-24 */
+  height: 6rem; /* h-24 */
+  color: #475569; /* text-slate-600 */
+}
+
+/* For the main card containing the list of campaigns */
+.campaign-list-card {
+  padding: 1.5rem; /* p-6 */
+}
+
+.campaign-list-title {
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem;
+  font-weight: 600; /* font-semibold */
+  color: #38bdf8; /* text-sky-400 */
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.campaign-list-items-container {
+  max-height: calc(100vh - 380px);
+  min-height: 200px;
+  overflow-y: auto;
+  padding-right: 0.5rem; /* pr-2 */
+}
+.campaign-list-items-container > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1rem; /* space-y-4 */
+}
+
+/* CampaignListItem.tsx Styles */
+
+.campaign-list-item-card {
+  padding: 1rem; /* p-4 */
+  background-color: #334155; /* bg-slate-700 */
+  transition-property: background-color, border-color, color, fill, stroke; /* transition-colors */
+  transition-duration: 150ms; /* duration-150 */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+  border-radius: 0.5rem; /* rounded-lg */
+}
+.campaign-list-item-card:hover {
+  background-color: #475569; /* hover:bg-slate-600 */
+}
+
+.campaign-list-item-header {
+  display: flex;
+  flex-direction: column; /* flex-col */
+  justify-content: space-between; /* justify-between */
+}
+@media (min-width: 640px) { /* sm: */
+  .campaign-list-item-header {
+    flex-direction: row; /* sm:flex-row */
+    align-items: center; /* sm:items-center */
+  }
+}
+
+.campaign-list-item-name-container {
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+@media (min-width: 640px) { /* sm: */
+  .campaign-list-item-name-container {
+    margin-bottom: 0; /* sm:mb-0 */
+  }
+}
+
+.campaign-list-item-name {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  font-weight: 600; /* font-semibold */
+  color: #7dd3fc; /* text-sky-300 */
+  display: flex;
+  align-items: center;
+}
+
+.campaign-list-item-name-icon {
+  height: 1.25rem; /* h-5 */
+  width: 1.25rem; /* w-5 */
+  margin-right: 0.5rem; /* mr-2 */
+  color: #38bdf8; /* text-sky-400 */
+  flex-shrink: 0;
+}
+
+.campaign-list-item-id-badge {
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.25rem;
+  color: #94a3b8; /* text-slate-400 */
+  background-color: #1e293b; /* bg-slate-800 */
+  padding: 0.25rem 0.5rem; /* py-1 px-2 */
+  border-radius: 9999px; /* rounded-full */
+  align-self: flex-start; /* self-start */
+}
+@media (min-width: 640px) { /* sm: */
+  .campaign-list-item-id-badge {
+    align-self: center; /* sm:self-center */
+  }
+}
+
+.campaign-list-item-details {
+  margin-top: 0.5rem; /* mt-2 */
+  padding-top: 0.5rem; /* pt-2 */
+  border-top: 1px solid #475569; /* border-t border-slate-600 */
+}
+
+.campaign-list-item-location {
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.25rem;
+  color: #cbd5e1; /* text-slate-300 */
+  display: flex;
+  align-items: center;
+}
+
+.campaign-list-item-location-icon {
+  height: 1rem; /* h-4 */
+  width: 1rem; /* w-4 */
+  margin-right: 0.5rem; /* mr-2 */
+  color: #2dd4bf; /* text-teal-400 */
+  flex-shrink: 0;
+}

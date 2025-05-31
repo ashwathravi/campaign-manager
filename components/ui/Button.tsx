@@ -7,25 +7,20 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = ({ children, className, variant = 'primary', ...props }: ButtonProps): React.ReactNode => {
-  const baseStyle = "font-semibold py-2 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-75 transition-all duration-150 ease-in-out";
-  
-  let variantStyle = '';
-  switch (variant) {
-    case 'primary':
-      variantStyle = 'bg-sky-500 hover:bg-sky-600 text-white focus:ring-sky-400';
-      break;
-    case 'secondary':
-      variantStyle = 'bg-slate-600 hover:bg-slate-700 text-slate-100 focus:ring-slate-500';
-      break;
-    case 'danger':
-      variantStyle = 'bg-red-500 hover:bg-red-600 text-white focus:ring-red-400';
-      break;
-  }
+  const variantClasses = {
+    primary: 'button-primary',
+    secondary: 'button-secondary',
+    danger: 'button-danger',
+  };
+
+  // Ensure className is a string and trim whitespace
+  const additionalClasses = typeof className === 'string' ? className.trim() : '';
 
   return (
     <button
       {...props}
-      className={`${baseStyle} ${variantStyle} ${className || ''}`}
+      // Apply base class, the selected variant class, and any additional classes passed via props
+      className={`button ${variantClasses[variant]} ${additionalClasses || ''}`.trim()}
     >
       {children}
     </button>

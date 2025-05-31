@@ -7,8 +7,11 @@ interface CardProps {
 }
 
 export const Card = ({ children, className }: CardProps): React.ReactNode => {
+  // Ensure className is a string and trim whitespace, defaulting to an empty string if undefined/null
+  const additionalClasses = typeof className === 'string' ? className.trim() : '';
+
   return (
-    <div className={`bg-slate-800/70 backdrop-blur-md rounded-xl shadow-lg ${className || ''}`}>
+    <div className={`custom-card ${additionalClasses || ''}`.trim()}>
       {children}
     </div>
   );
