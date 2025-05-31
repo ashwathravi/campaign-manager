@@ -101,7 +101,7 @@ const App = (): React.ReactNode => {
 
       <footer className="app-footer">
         <p className="app-footer-text">
-          &copy; {new Date().getFullYear()} Campaign Manager App. Built with React & Tailwind CSS.
+          &copy; {new Date().getFullYear()} Campaign Manager App. Built with React & CSS.
         </p>
       </footer>
     </div>

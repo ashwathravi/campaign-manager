@@ -1,8 +1,8 @@
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #0f172a; /* Original Tailwind: bg-slate-900 */
+  background-color: #0f172a;
   /* Ensure text color is suitable for the dark background, e.g., light gray or white */
-  color: #f1f5f9; /* Example: slate-100, adjust as needed */
+  color: #f1f5f9;
 }
 
 /* Custom scrollbar for elements with .custom-scrollbar class */
@@ -11,15 +11,15 @@ body {
   height: 8px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #1e293b; /* Original Tailwind: slate-800 */
+  background: #1e293b;
   border-radius: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #38bdf8; /* Original Tailwind: sky-400 */
+  background: #38bdf8;
   border-radius: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #0ea5e9; /* Original Tailwind: sky-500 */
+  background: #0ea5e9;
 }
 /* For Firefox */
 .custom-scrollbar {
@@ -27,7 +27,7 @@ body {
   scrollbar-color: #38bdf8 #1e293b; /* thumb and track color */
 }
 
-/* Import Google Fonts 'Inter' - this should be in index.html or here if not loaded by other means */
+/* Import Google Fonts 'Inter' */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* App.tsx Specific Styles */
@@ -35,21 +35,21 @@ body {
 /* Main container for App */
 .app-container {
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #0f172a, #1e293b); /* from-slate-900 to-slate-800 */
+  background: linear-gradient(to bottom right, #0f172a, #1e293b);
   color: #f1f5f9; /* text-slate-100 (already on body, but good for specificity) */
-  padding: 1rem; /* p-4 */
-  font-family: 'Inter', sans-serif; /* font-sans (already on body) */
+  padding: 1rem;
+  font-family: 'Inter', sans-serif; /* Ensure font-sans is applied if not inherited */
 }
-@media (min-width: 640px) { /* sm: */
+@media (min-width: 640px) {
   .app-container {
-    padding: 2rem; /* sm:p-8 */
+    padding: 2rem;
   }
 }
 
 /* Header */
 .app-header {
-  margin-bottom: 2.5rem; /* mb-10 */
-  text-align: center; /* text-center */
+  margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 .app-header-title-container {
@@ -59,110 +59,107 @@ body {
 }
 
 .app-title {
-  font-size: 2.25rem; /* text-4xl */
+  font-size: 2.25rem;
   line-height: 2.5rem;
-  font-weight: 700; /* font-bold */
-  letter-spacing: -0.025em; /* tracking-tight */
+  font-weight: 700;
+  letter-spacing: -0.025em;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  background-image: linear-gradient(to right, #38bdf8, #67e8f9); /* from-sky-400 to-cyan-300 */
+  background-image: linear-gradient(to right, #38bdf8, #67e8f9);
 }
-@media (min-width: 640px) { /* sm: */
+@media (min-width: 640px) {
   .app-title {
-    font-size: 3rem; /* sm:text-5xl */
+    font-size: 3rem;
     line-height: 1;
   }
 }
 
 .app-header-subtitle {
-  margin-top: 0.75rem; /* mt-3 */
-  font-size: 1.125rem; /* text-lg */
+  margin-top: 0.75rem;
+  font-size: 1.125rem;
   line-height: 1.75rem;
-  color: #94a3b8; /* text-slate-400 */
-  max-width: 36rem; /* max-w-xl */
+  color: #94a3b8;
+  max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
 }
 
 /* Main content area */
 .app-main-content {
-  max-width: 56rem; /* max-w-4xl */
+  max-width: 56rem;
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
-  gap: 2rem; /* gap-8 */
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
 }
-@media (min-width: 768px) { /* md: */
+@media (min-width: 768px) {
   .app-main-content {
-    grid-template-columns: repeat(3, minmax(0, 1fr)); /* md:grid-cols-3 */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 .app-main-form-section {
   /* no specific styles from App.tsx, relies on grid layout */
 }
-@media (min-width: 768px) { /* md: */
+@media (min-width: 768px) {
   .app-main-form-section {
-    grid-column: span 1 / span 1; /* md:col-span-1 */
+    grid-column: span 1 / span 1;
   }
 }
 
 .app-main-list-section {
   /* no specific styles from App.tsx, relies on grid layout */
 }
-@media (min-width: 768px) { /* md: */
+@media (min-width: 768px) {
   .app-main-list-section {
-    grid-column: span 2 / span 2; /* md:col-span-2 */
+    grid-column: span 2 / span 2;
   }
 }
 
 /* Loading/Error Card Specific Styles (applied via Card's className prop) */
-/* We will create classes that App.tsx passes to Card. Card itself will be handled later. */
 .app-loading-card {
-  padding: 1.5rem; /* p-6 */
-  /* background-color: #1e293b; bg-slate-800 - Card default is bg-slate-800/70 */
-  /* Card component has its own bg, so we might not need to override bg here unless specifically different */
-  /* box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); shadow-xl - Card default */
-  text-align: center; /* text-center */
+  padding: 1.5rem;
+  /* Card component has its own background and shadow; this class primarily adjusts content alignment and padding. */
+  text-align: center;
 }
 
 .app-error-card {
-  padding: 1.5rem; /* p-6 */
-  background-color: rgba(127, 29, 29, 0.5); /* bg-red-900/50 */
-  border: 1px solid #b91c1c; /* border border-red-700 */
-  /* box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); shadow-xl - Card default */
-  text-align: center; /* text-center */
+  padding: 1.5rem;
+  background-color: rgba(127, 29, 29, 0.5); /* Specific background for error state */
+  border: 1px solid #b91c1c; /* Specific border for error state */
+  /* Card component has its own shadow; this class primarily adjusts content, padding, background, and border. */
+  text-align: center;
 }
 
 
 /* Text styles within cards */
-.app-card-title-loading { /* h2 for loading */
-  font-size: 1.5rem; /* text-2xl */
+.app-card-title-loading {
+  font-size: 1.5rem;
   line-height: 2rem;
-  font-weight: 600; /* font-semibold */
-  color: #38bdf8; /* text-sky-400 */
-  margin-bottom: 1rem; /* mb-4 */
+  font-weight: 600;
+  color: #38bdf8;
+  margin-bottom: 1rem;
 }
-.app-card-text-loading { /* p for loading */
-  color: #94a3b8; /* text-slate-400 */
+.app-card-text-loading {
+  color: #94a3b8;
 }
 
-.app-card-title-error { /* h2 for error */
-  font-size: 1.5rem; /* text-2xl */
+.app-card-title-error {
+  font-size: 1.5rem;
   line-height: 2rem;
-  font-weight: 600; /* font-semibold */
-  color: #fca5a5; /* text-red-300 */
-  margin-bottom: 1rem; /* mb-4 */
+  font-weight: 600;
+  color: #fca5a5;
+  margin-bottom: 1rem;
 }
-.app-card-text-error { /* p for error */
-  color: #fecaca; /* text-red-200 */
+.app-card-text-error {
+  color: #fecaca;
 }
 
-/* Spinner */
+/* Spinner animation for general app loading */
 .app-spinner-container {
-  margin-top: 1rem; /* mt-4 */
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -173,314 +170,383 @@ body {
 }
 .app-spinner {
   animation: spin 1s linear infinite;
-  border-radius: 9999px; /* rounded-full */
-  height: 3rem; /* h-12 */
-  width: 3rem; /* w-12 */
-  border-top-width: 2px; /* border-t-2 */
-  border-bottom-width: 2px; /* border-b-2 */
-  border-left-width: 2px; /* Adding for consistency if only t/b were colored */
-  border-right-width: 2px; /* Adding for consistency if only t/b were colored */
-  border-style: solid; /* Make sure border-style is solid */
-  border-color: transparent; /* Default border color */
-  border-top-color: #38bdf8; /* border-sky-400 for top */
-  border-bottom-color: #38bdf8; /* border-sky-400 for bottom */
+  border-radius: 9999px;
+  height: 3rem;
+  width: 3rem;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  border-style: solid;
+  border-color: transparent; /* Default to transparent, specific borders colored below */
+  border-top-color: #38bdf8;
+  border-bottom-color: #38bdf8;
 }
 
 
 /* Footer */
 .app-footer {
-  text-align: center; /* text-center */
-  margin-top: 3rem; /* mt-12 */
-  padding-top: 1.5rem; /* py-6 */
-  padding-bottom: 1.5rem; /* py-6 */
-  border-top-width: 1px; /* border-t */
-  border-top-style: solid; /* Ensure border style is set */
-  border-top-color: #334155; /* border-slate-700 */
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #334155;
 }
 
 .app-footer-text {
-  font-size: 0.875rem; /* text-sm */
+  font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #64748b; /* text-slate-500 */
+  color: #64748b;
 }
 
 /* Utility classes for MegaphoneIcon specific styling in App.tsx */
 .app-megaphone-icon {
-  height: 3rem; /* h-12 */
-  width: 3rem; /* w-12 */
-  color: #38bdf8; /* text-sky-400 */
-  margin-right: 0.75rem; /* mr-3 */
+  height: 3rem;
+  width: 3rem;
+  color: #38bdf8;
+  margin-right: 0.75rem;
 }
 
 /* Utility class for the Try Again button margin */
 .app-try-again-button {
-  margin-top: 1rem; /* mt-4 */
+  margin-top: 1rem;
 }
 
 /* Button Component Styles */
 .button {
-  font-weight: 600; /* font-semibold */
-  padding: 0.5rem 1rem; /* py-2 px-4 */
-  border-radius: 0.5rem; /* rounded-lg */
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-md */
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-  transition-duration: 150ms; /* duration-150 */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
-  border: 2px solid transparent;
-  outline: none; /* Replaces focus:outline-none */
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent; /* For focus ring spacing */
+  outline: none;
 }
 
 .button:focus {
+  /* The box-shadow provides the focus ring effect. */
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06), 0 0 0 2px var(--button-focus-ring-color, rgba(59, 130, 246, 0.75));
 }
 
 .button-primary {
-  background-color: #0ea5e9; /* bg-sky-500 */
-  color: #ffffff; /* text-white */
-  --button-focus-ring-color: rgba(56, 189, 248, 0.75); /* focus:ring-sky-400 with opacity 0.75 */
+  background-color: #0ea5e9;
+  color: #ffffff;
+  --button-focus-ring-color: rgba(56, 189, 248, 0.75); /* Corresponds to focus:ring-sky-400 with opacity */
 }
 .button-primary:hover {
-  background-color: #0284c7; /* hover:bg-sky-600 */
+  background-color: #0284c7;
 }
 
 .button-secondary {
-  background-color: #475569; /* bg-slate-600 */
-  color: #f1f5f9; /* text-slate-100 */
-  --button-focus-ring-color: rgba(100, 116, 139, 0.75); /* focus:ring-slate-500 with opacity 0.75 */
+  background-color: #475569;
+  color: #f1f5f9;
+  --button-focus-ring-color: rgba(100, 116, 139, 0.75); /* Corresponds to focus:ring-slate-500 with opacity */
 }
 .button-secondary:hover {
-  background-color: #334155; /* hover:bg-slate-700 */
+  background-color: #334155;
 }
 
 .button-danger {
-  background-color: #ef4444; /* bg-red-500 */
-  color: #ffffff; /* text-white */
-  --button-focus-ring-color: rgba(248, 113, 113, 0.75); /* focus:ring-red-400 with opacity 0.75 */
+  background-color: #ef4444;
+  color: #ffffff;
+  --button-focus-ring-color: rgba(248, 113, 113, 0.75); /* Corresponds to focus:ring-red-400 with opacity */
 }
 .button-danger:hover {
-  background-color: #dc2626; /* hover:bg-red-600 */
+  background-color: #dc2626;
 }
 
 /* Card Component Styles */
 .custom-card {
-  background-color: rgba(30, 41, 59, 0.7); /* bg-slate-800/70 */
+  background-color: rgba(30, 41, 59, 0.7); /* Default background with opacity */
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); /* backdrop-blur-md */
-  border-radius: 0.75rem; /* rounded-xl */
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-lg */
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  /* Note: Padding and specific content styling are often applied by additional classes passed via className. */
 }
 
 /* CampaignForm.tsx Specific Styles */
 .campaign-form-card {
-  padding: 1.5rem; /* p-6 */
-  background-color: #1e293b; /* bg-slate-800 */
-  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); /* shadow-xl */
+  padding: 1.5rem;
+  background-color: #1e293b; /* Override Card default for a more opaque background */
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
 }
 
 .campaign-form-title {
-  font-size: 1.5rem; /* text-2xl */
+  font-size: 1.5rem;
   line-height: 2rem;
-  font-weight: 600; /* font-semibold */
-  color: #38bdf8; /* text-sky-400 */
-  margin-bottom: 1.5rem; /* mb-6 */
+  font-weight: 600;
+  color: #38bdf8;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
 }
 
 .campaign-form-title-icon {
-  height: 1.5rem; /* h-6 */
-  width: 1.5rem; /* w-6 */
-  margin-right: 0.5rem; /* mr-2 */
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.5rem;
 }
 
+/* space-y-6 equivalent for direct children of .campaign-form */
 .campaign-form > :not([hidden]) ~ :not([hidden]) {
-  margin-top: 1.5rem; /* space-y-6 */
+  margin-top: 1.5rem;
 }
 
 .campaign-form-input-icon {
-  height: 1.25rem; /* h-5 */
-  width: 1.25rem; /* w-5 */
-  color: #94a3b8; /* text-slate-400 */
+  height: 1.25rem;
+  width: 1.25rem;
+  color: #94a3b8;
 }
 
 .campaign-form-error-message {
-  font-size: 0.875rem; /* text-sm */
+  font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #f87171; /* text-red-400 */
+  color: #f87171;
 }
 
 .campaign-form-submit-button {
-  width: 100%; /* w-full */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Spinner inside the submit button */
 .campaign-form-spinner-icon {
-  margin-left: -0.25rem; /* -ml-1 */
-  margin-right: 0.75rem; /* mr-3 */
-  height: 1.25rem; /* h-5 */
-  width: 1.25rem; /* w-5 */
-  color: #ffffff; /* text-white */
+  margin-left: -0.25rem;
+  margin-right: 0.75rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  color: #ffffff;
 }
 .campaign-form-spinner-icon.animate-spin {
-  animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite; /* Uses the globally defined @keyframes spin */
 }
 
 .campaign-form-spinner-icon .spinner-circle {
-  opacity: 0.25; /* opacity-25 */
+  opacity: 0.25;
 }
 .campaign-form-spinner-icon .spinner-path {
-  opacity: 0.75; /* opacity-75 */
+  opacity: 0.75;
 }
 
+/* PlusIcon inside the submit button */
 .campaign-form-button-icon {
-  height: 1.25rem; /* h-5 */
-  width: 1.25rem; /* w-5 */
-  margin-right: 0.5rem; /* mr-2 */
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.5rem;
 }
 
 /* CampaignList.tsx Styles */
 
-/* For the card shown when the campaign list is empty */
 .campaign-list-empty-card {
-  padding: 1.5rem; /* p-6 */
-  text-align: center; /* text-center */
+  padding: 1.5rem;
+  text-align: center;
 }
 
 .campaign-list-empty-title {
-  font-size: 1.5rem; /* text-2xl */
+  font-size: 1.5rem;
   line-height: 2rem;
-  font-weight: 600; /* font-semibold */
-  color: #38bdf8; /* text-sky-400 */
-  margin-bottom: 1rem; /* mb-4 */
+  font-weight: 600;
+  color: #38bdf8;
+  margin-bottom: 1rem;
 }
 
 .campaign-list-empty-text {
-  color: #94a3b8; /* text-slate-400 */
+  color: #94a3b8;
 }
 
 .campaign-list-empty-svg-container {
-  margin-top: 1.5rem; /* mt-6 */
-  opacity: 0.5; /* opacity-50 */
+  margin-top: 1.5rem;
+  opacity: 0.5;
   display: flex;
   justify-content: center;
 }
 
 .campaign-list-empty-svg {
-  width: 6rem; /* w-24 */
-  height: 6rem; /* h-24 */
-  color: #475569; /* text-slate-600 */
+  width: 6rem;
+  height: 6rem;
+  color: #475569;
 }
 
-/* For the main card containing the list of campaigns */
 .campaign-list-card {
-  padding: 1.5rem; /* p-6 */
+  padding: 1.5rem;
 }
 
 .campaign-list-title {
-  font-size: 1.5rem; /* text-2xl */
+  font-size: 1.5rem;
   line-height: 2rem;
-  font-weight: 600; /* font-semibold */
-  color: #38bdf8; /* text-sky-400 */
-  margin-bottom: 1.5rem; /* mb-6 */
+  font-weight: 600;
+  color: #38bdf8;
+  margin-bottom: 1.5rem;
 }
 
 .campaign-list-items-container {
-  max-height: calc(100vh - 380px);
+  max-height: calc(100vh - 380px); /* Calculation based on assumed layout/other element heights */
   min-height: 200px;
   overflow-y: auto;
-  padding-right: 0.5rem; /* pr-2 */
+  padding-right: 0.5rem;
 }
+/* space-y-4 equivalent for direct children of .campaign-list-items-container */
 .campaign-list-items-container > :not([hidden]) ~ :not([hidden]) {
-  margin-top: 1rem; /* space-y-4 */
+  margin-top: 1rem;
 }
 
 /* CampaignListItem.tsx Styles */
 
 .campaign-list-item-card {
-  padding: 1rem; /* p-4 */
-  background-color: #334155; /* bg-slate-700 */
-  transition-property: background-color, border-color, color, fill, stroke; /* transition-colors */
-  transition-duration: 150ms; /* duration-150 */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
-  border-radius: 0.5rem; /* rounded-lg */
+  padding: 1rem;
+  background-color: #334155;
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0.5rem;
 }
 .campaign-list-item-card:hover {
-  background-color: #475569; /* hover:bg-slate-600 */
+  background-color: #475569;
 }
 
 .campaign-list-item-header {
   display: flex;
-  flex-direction: column; /* flex-col */
-  justify-content: space-between; /* justify-between */
+  flex-direction: column;
+  justify-content: space-between;
 }
-@media (min-width: 640px) { /* sm: */
+@media (min-width: 640px) {
   .campaign-list-item-header {
-    flex-direction: row; /* sm:flex-row */
-    align-items: center; /* sm:items-center */
+    flex-direction: row;
+    align-items: center;
   }
 }
 
 .campaign-list-item-name-container {
-  margin-bottom: 0.5rem; /* mb-2 */
+  margin-bottom: 0.5rem;
 }
-@media (min-width: 640px) { /* sm: */
+@media (min-width: 640px) {
   .campaign-list-item-name-container {
-    margin-bottom: 0; /* sm:mb-0 */
+    margin-bottom: 0;
   }
 }
 
 .campaign-list-item-name {
-  font-size: 1.125rem; /* text-lg */
+  font-size: 1.125rem;
   line-height: 1.75rem;
-  font-weight: 600; /* font-semibold */
-  color: #7dd3fc; /* text-sky-300 */
+  font-weight: 600;
+  color: #7dd3fc;
   display: flex;
   align-items: center;
 }
 
 .campaign-list-item-name-icon {
-  height: 1.25rem; /* h-5 */
-  width: 1.25rem; /* w-5 */
-  margin-right: 0.5rem; /* mr-2 */
-  color: #38bdf8; /* text-sky-400 */
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.5rem;
+  color: #38bdf8;
   flex-shrink: 0;
 }
 
 .campaign-list-item-id-badge {
-  font-size: 0.875rem; /* text-sm */
+  font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #94a3b8; /* text-slate-400 */
-  background-color: #1e293b; /* bg-slate-800 */
-  padding: 0.25rem 0.5rem; /* py-1 px-2 */
-  border-radius: 9999px; /* rounded-full */
-  align-self: flex-start; /* self-start */
+  color: #94a3b8;
+  background-color: #1e293b;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  align-self: flex-start;
 }
-@media (min-width: 640px) { /* sm: */
+@media (min-width: 640px) {
   .campaign-list-item-id-badge {
-    align-self: center; /* sm:self-center */
+    align-self: center;
   }
 }
 
 .campaign-list-item-details {
-  margin-top: 0.5rem; /* mt-2 */
-  padding-top: 0.5rem; /* pt-2 */
-  border-top: 1px solid #475569; /* border-t border-slate-600 */
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #475569;
 }
 
 .campaign-list-item-location {
-  font-size: 0.875rem; /* text-sm */
+  font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #cbd5e1; /* text-slate-300 */
+  color: #cbd5e1;
   display: flex;
   align-items: center;
 }
 
 .campaign-list-item-location-icon {
-  height: 1rem; /* h-4 */
-  width: 1rem; /* w-4 */
-  margin-right: 0.5rem; /* mr-2 */
-  color: #2dd4bf; /* text-teal-400 */
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
+  color: #2dd4bf;
   flex-shrink: 0;
+}
+
+/* Input.tsx Component Styles */
+
+.input-label {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  margin-bottom: 0.25rem;
+}
+
+.input-field-wrapper {
+  position: relative;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+
+.input-icon-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding-left: 0.75rem;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.custom-input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background-color: #334155;
+  border: 1px solid #475569;
+  border-radius: 0.375rem;
+  color: #ffffff;
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.custom-input::placeholder {
+  color: #94a3b8;
+  opacity: 1; /* Ensure placeholder is fully opaque by default */
+}
+
+.custom-input:focus {
+  border-color: #0ea5e9;
+  /* Simulates a focus ring using box-shadow */
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.5);
+}
+
+/* Specific class for when an icon is present, to adjust left padding */
+.custom-input-with-icon {
+  padding-left: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .custom-input {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
 }

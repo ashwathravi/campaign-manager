@@ -9,25 +9,29 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = ({ label, id, icon, containerClassName, ...props }: InputProps): React.ReactNode => {
+  // Combine base input classes with conditional class for icon padding and any additional classes from props
+  const inputClasses = [
+    'custom-input',
+    icon ? 'custom-input-with-icon' : '',
+    props.className || '' // Include className passed from parent
+  ].filter(Boolean).join(' '); // Filter out empty strings and join
+
   return (
-    <div className={containerClassName}>
-      <label htmlFor={id} className="block text-sm font-medium text-slate-300 mb-1">
+    <div className={containerClassName || ''}> {/* Ensure containerClassName is at least an empty string */}
+      <label htmlFor={id} className="input-label">
         {label}
       </label>
-      <div className="relative rounded-md shadow-sm">
+      <div className="input-field-wrapper">
         {icon && (
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <div className="input-icon-container">
+            {/* Icon is passed as a child, its own styling (size, color) is handled by the class it's given when created */}
             {icon}
           </div>
         )}
         <input
           id={id}
-          {...props}
-          className={`block w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-md 
-                      placeholder-slate-400 text-white 
-                      focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 
-                      sm:text-sm transition-colors duration-150 ease-in-out
-                      ${icon ? 'pl-10' : ''} ${props.className || ''}`}
+          {...props} // Spread remaining props (value, onChange, type, placeholder, disabled, etc.)
+          className={inputClasses} // Apply combined classes
         />
       </div>
     </div>
