@@ -8,7 +8,8 @@ import { MapPinIcon } from './icons/MapPinIcon';
 import { Card } from './ui/Card';
 
 interface CampaignFormProps {
-  onAddCampaign: (name: string, location: string) => Promise<void>; // Updated to Promise
+  /** Callback that adds a campaign and returns a Promise when the operation completes. */
+  onAddCampaign: (name: string, location: string) => Promise<void>;
 }
 
 const CampaignForm = ({ onAddCampaign }: CampaignFormProps): React.ReactNode => {
