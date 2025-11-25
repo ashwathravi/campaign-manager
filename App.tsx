@@ -24,7 +24,7 @@ const App = (): React.ReactNode => {
         throw new Error(errorData.message || `Failed to fetch campaigns. Status: ${response.status}`);
       }
       const data: Campaign[] = await response.json();
-      setCampaigns(data.sort((a, b) => b.id.localeCompare(a.id))); // Assuming newer campaigns have higher IDs or based on creation time implicitly
+      setCampaigns(data.sort((a, b) => b.id.localeCompare(a.id, undefined, { numeric: true }))); // Assuming newer campaigns have higher IDs or based on creation time implicitly
     } catch (error) {
       if (error instanceof Error) {
         setFetchError(error.message);
@@ -56,7 +56,7 @@ const App = (): React.ReactNode => {
     }
 
     const newCampaign: Campaign = await response.json();
-    setCampaigns(prevCampaigns => [newCampaign, ...prevCampaigns].sort((a, b) => b.id.localeCompare(a.id)));
+    setCampaigns(prevCampaigns => [newCampaign, ...prevCampaigns].sort((a, b) => b.id.localeCompare(a.id, undefined, { numeric: true })));
   }, []);
 
   return (
